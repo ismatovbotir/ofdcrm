@@ -16,8 +16,8 @@ return new class extends Migration
             $table->foreignId('user_id')->nullable();
             $table->foreignId('client_id')->constrained();
             $table->double('total');
-            $table->boolen('billed')->default(true);
-            $table->boolen('paid')->default(false);
+            $table->boolean('billed')->default(true);
+            $table->boolean('paid')->default(false);
             $table->string('comment')->nullable();
 
             $table->timestamps();
