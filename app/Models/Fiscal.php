@@ -17,4 +17,7 @@ class Fiscal extends Model
     public function client(){
         return $this->belongsTo(Client::class);
     }
+    public function latestStatus(){
+        return $this->hasOne(FiscalStatus::class)->orderBy('created_at','desc');
+    } 
 }

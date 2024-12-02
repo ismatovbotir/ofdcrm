@@ -13,7 +13,7 @@ class FiscalController extends Controller
      */
     public function index()
     {
-       $fiscals=Fiscal::with('client')->with('status')->paginate(20);
+       $fiscals=Fiscal::with('client')->with('latestStatus')->paginate(20);
        //dd($fiscals);
        return view('fiscal.index',['data'=>$fiscals]);
     }
