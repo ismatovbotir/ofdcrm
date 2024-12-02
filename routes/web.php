@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FiscalController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\BillController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +18,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('main');
 
 Auth::routes();
+
+Route::resource('fiscals/',FiscalController::class)->names('fiscals');
+
+Route::resource('clients/',ClientController::class)->names('clients');
+
+Route::resource('bills/',BillController::class)->names('bills');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

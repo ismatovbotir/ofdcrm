@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Fiscal;
+use App\Models\FiscalStatus;
 
 class FiscalController extends Controller
 {
@@ -11,7 +13,9 @@ class FiscalController extends Controller
      */
     public function index()
     {
-        //
+       $fiscals=Fiscal::with('client')->with('status')->paginate(20);
+       //dd($fiscals);
+       return view('fiscal.index',['data'=>$fiscals]);
     }
 
     /**
@@ -19,7 +23,7 @@ class FiscalController extends Controller
      */
     public function create()
     {
-        //
+        return view('fiscal.create');
     }
 
     /**
@@ -27,7 +31,20 @@ class FiscalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $fm=$request->input('fm');
+        $fiscal=Fiscal::create(
+            [
+                "fm"=>$fm
+            ]
+        );
+        FiscalStatus::create(
+            [
+                "fiscal_id"=>$fiscal->id,
+                "name"=>"new"
+
+            ]
+        );
+        return to_route('fiscals.index');
     }
 
     /**

@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('fiscals', function (Blueprint $table) {
             $table->id();
-            $table->string('fm');
-            $table->boolean('active')->default(true);
+            $table->string('fm')->unique();
+            $table->boolean('active')->default(false);
+            $table->foreignId('client_id')->nullable();
             $table->timestamps();
         });
     }
