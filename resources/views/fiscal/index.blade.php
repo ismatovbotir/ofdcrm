@@ -55,7 +55,7 @@
                         <a class="text-soft dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown" aria-expanded="false"><em class="icon ni ni-more-h"></em></a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-xs" style="">
                             <ul class="link-list-plain">
-                                <li><a href="{{route('fiscals.show',['id'=>$item->id])}}">View</a></li>
+                                <li><a href="{{route('fiscals.show',['fiscal'=>$item->id])}}">View</a></li>
                                 <li><a href="#">Edit</a></li>
                                 <li><a href="#">Remove</a></li>
                             </ul>
@@ -66,6 +66,9 @@
            @endforeach
         </tbody>
     </table>
+    <div class="m-2">
+        {{$data->links('pagination::bootstrap-4')}}
+    </div>
 </div><!-- .card-preview -->
 
 

@@ -22,10 +22,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::resource('fiscals/',FiscalController::class)->names('fiscals');
+Route::resource('fiscals',FiscalController::class)->names('fiscals');
 
-Route::resource('clients/',ClientController::class)->names('clients');
+Route::resource('clients',ClientController::class)->names('clients');
 
-Route::resource('bills/',BillController::class)->names('bills');
+Route::resource('bills',BillController::class)->names('bills');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

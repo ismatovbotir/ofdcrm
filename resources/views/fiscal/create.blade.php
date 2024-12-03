@@ -19,7 +19,7 @@
                 <div class="row gy-4">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            
+
                             <div class="form-control-wrap">
                                 <input type="text" class="form-control" id="default-01" placeholder="fm number" name="fm">
                             </div>
@@ -27,19 +27,32 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            
-                        
-                                                        <button type="submit" href="#" class="btn btn-success">ADD</button>
-                                                    
+
+
+                            <button type="submit" href="#" class="btn btn-success">ADD</button>
+
                         </div>
                     </div>
                 </div>
             </div>
         </form>
-
-
-
     </div>
+    <div class="mb-3">
+            @if($errors->any())
+
+            <div class="col">
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                        <li>
+                            {{$error}}
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+            @endif
+        </div>
 </div><!-- .card-preview -->
 
 

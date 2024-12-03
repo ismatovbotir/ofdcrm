@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Fiscal;
 use App\Models\FiscalStatus;
+use App\Http\Requests\Fiscal\StoreRequest;
 
 class FiscalController extends Controller
 {
@@ -13,7 +14,7 @@ class FiscalController extends Controller
      */
     public function index()
     {
-       $fiscals=Fiscal::with('client')->with('latestStatus')->paginate(20);
+       $fiscals=Fiscal::with('client')->with('latestStatus')->paginate(10);
        //dd($fiscals);
        return view('fiscal.index',['data'=>$fiscals]);
     }
@@ -29,12 +30,14 @@ class FiscalController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        $fm=$request->input('fm');
+        $data=$request->validated();
+        //dd($data);
+        $fm=$data['fm'];
         $fiscal=Fiscal::create(
             [
-                "fm"=>$fm
+                "fm"=> strtoupper($fm)
             ]
         );
         FiscalStatus::create(
