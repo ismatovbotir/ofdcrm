@@ -28,4 +28,12 @@ Route::resource('clients',ClientController::class)->names('clients');
 
 Route::resource('bills',BillController::class)->names('bills');
 
+Route::get('/clientFiscals/{client}',[ClientController::class,'clientFiscals'])->name('client.fiscals');
+
+Route::post('/clientFiscals/{client}',[ClientController::class,'clientFiscalStore'])->name('client.fiscal.store');
+
+Route::get('/clientContacts/{client}',[ClientController::class,'clientContacts'])->name('client.contacts');
+
+Route::post('/clientContacts/{client}',[ClientController::class,'clientContactStore'])->name('client.contact.store');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
